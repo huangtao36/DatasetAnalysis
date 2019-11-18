@@ -26,3 +26,4 @@ Deepfashion 数据集下的一个分支：  [Fashion Synthesis](http://mmlab.ie.
 
 - get_label.py: 根据 Caption 获得图像标签（性别，颜色，袖长，款式）
 - count_num.py: 分别统计性别，颜色，袖长，款式的图像数量， 基于 get_label.py
+- dataloader.py: 数据集加载，修改后用于各项工程
