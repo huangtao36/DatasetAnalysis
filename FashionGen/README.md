@@ -93,14 +93,14 @@
 
 对应的 Caption分别为： 
 
--  0-152775: Straight-leg Japanese denim jeans in black. Four-pocket styling. Raw edge at cuffs. Zip-fly. Tonal stitching. Approx. 6.75" leg opening.
-- 1-80627: Long sleeve jacquard knit bomber jacket in black. Rib knit stand collar, cuffs, and hem. Concealed zip closure with press-stud placket at front. Welt pockets at waist. Raglan sleeves. Asymmetric hem. Unlined. Tonal stitching.
-- 2-82295: Long sleeve hoodie in 'hustler' grey. Beige drawstring at hood. Ribbed sleeve cuffs. Fleece lining. Tonal stitching.
-- 3-155846: Buffed leather slip-on sneakers in black. Round toe. Signature safety pin hardware at vamp. Elasticized gusset at sides of tongue. Padded collar. Treaded rubber sole in white featuring rubberized logo at heel. Silver-tone hardware. Tonal stitching.
-- 4-12381: Cropped relaxed-fit sarouel pants in black. Four-pocket styling. Elasticized waistband with tonal drawstring. Pleat feature at kneecaps. Tonal stitching.
-- 5-157450: Long sleeve technical satin jacket in black. Trim in orange throughout. Stand collar. Two-way zip closure at front. Logo printed in silver-tone at chest and upper sleeve. Zippered pockets at waist. Signature stripes in metallic silver-tone at body and sleeve. Raglan sleeves. Elasticized cuffs and hem. Unlined. Tonal stitching.
-- 6-80746: Long sleeve woven jacket in charcoal grey. Peaked lapel collar. Zip closure in white at front. Flap pockets at body. Raglan sleeves. Central vent at back hem. Tonal stitching.
-- 7-193990: Long sleeve velvet bomber jacket in black. Rib knit stand collar, cuffs, and hem striped in black and metallic silver-tone. Zip closure at front. Logo appliqu at bust. Welt pockets at waist. Zippered vents at cuffs. Fully lined. Silver-tone hardware. Tonal stitching.
-- 8-228736: Rubber slip-on sandals in white. Open round toe. Signature multicolor stripes printed at vamp. Moulded footbed. Tonal rubber sole. Tonal stitching.
+-  **0-152775-JEANS**: Straight-leg Japanese denim jeans in black. Four-pocket styling. Raw edge at cuffs. Zip-fly. Tonal stitching. Approx. 6.75" leg opening. 
+-  **1-80627-SWEATERS**: Long sleeve jacquard knit bomber jacket in black. Rib knit stand collar, cuffs, and hem. Concealed zip closure with press-stud placket at front. Welt pockets at waist. Raglan sleeves. Asymmetric hem. Unlined. Tonal stitching.
+-  **2-82295-SWEATERS**: Long sleeve hoodie in 'hustler' grey. Beige drawstring at hood. Ribbed sleeve cuffs. Fleece lining. Tonal stitching.
+-  **3-155846-SNEAKERS**: Buffed leather slip-on sneakers in black. Round toe. Signature safety pin hardware at vamp. Elasticized gusset at sides of tongue. Padded collar. Treaded rubber sole in white featuring rubberized logo at heel. Silver-tone hardware. Tonal stitching.
+-  **4-12381-PANTS**: Cropped relaxed-fit sarouel pants in black. Four-pocket styling. Elasticized waistband with tonal drawstring. Pleat feature at kneecaps. Tonal stitching.
+-  **5-157450-JACKETS & COATS:** Long sleeve technical satin jacket in black. Trim in orange throughout. Stand collar. Two-way zip closure at front. Logo printed in silver-tone at chest and upper sleeve. Zippered pockets at waist. Signature stripes in metallic silver-tone at body and sleeve. Raglan sleeves. Elasticized cuffs and hem. Unlined. Tonal stitching.
+-  **6-80746-JACKETS & COATS**: Long sleeve woven jacket in charcoal grey. Peaked lapel collar. Zip closure in white at front. Flap pockets at body. Raglan sleeves. Central vent at back hem. Tonal stitching.
+-  **7-193990-JACKETS & COATS:** Long sleeve velvet bomber jacket in black. Rib knit stand collar, cuffs, and hem striped in black and metallic silver-tone. Zip closure at front. Logo appliqu at bust. Welt pockets at waist. Zippered vents at cuffs. Fully lined. Silver-tone hardware. Tonal stitching.
+-  **8-228736-SANDALS**: Rubber slip-on sandals in white. Open round toe. Signature multicolor stripes printed at vamp. Moulded footbed. Tonal rubber sole. Tonal stitching.
 
 （第二个 id 为图像在数据集中的索引，均来自于训练集）
