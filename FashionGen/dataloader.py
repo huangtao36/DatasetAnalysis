@@ -8,14 +8,15 @@ from collections import defaultdict
 
 import torch
 import torch.utils.data as data
+from torch.autograd import Variable
 import torchvision.transforms as transforms
 
 import os
+import sys
 import h5py
 import numpy as np
+import pandas as pd
 from PIL import Image
-
-import sys
 
 if sys.version_info[0] == 2:
     import cPickle as pickle
@@ -26,7 +27,9 @@ else:
 class TextDataset(data.Dataset):
     def __init__(self, opt, split='train', base_size=64,
                  transform=None, target_transform=None):
+
         data_dir = opt.DATAROOT
+        self.opt = opt
 
         self.transform = transform
         self.norm = transforms.Compose([
@@ -34,7 +37,6 @@ class TextDataset(data.Dataset):
             transforms.Normalize((0.5, 0.5, 0.5), (0.5, 0.5, 0.5))])
         self.target_transform = target_transform
         self.embeddings_num = opt.CAPTIONS_PER_IMAGE
-        self.opt = opt
 
         self.imsize = []
         for i in range(opt.BRANCH_NUM):
@@ -56,13 +58,11 @@ class TextDataset(data.Dataset):
         self.current_h5_file = self.train_file_h5 if split == 'train' else self.test_file_h5
 
         # filter based on selected categories
-        selected_categories = ['TOPS', 'SWEATERS', 'SHIRTS', 'DRESSES']
+        selected_categories = ['TOPS', 'SWEATERS', 'PANTS', 'JEANS', 'SHIRTS', 'DRESSES', 'SHORTS', 'SKIRTS']
         self.filtered_image_indexes = self.filter_by_categories(selected_categories, split)
-
         self.captions, self.ixtoword, self.wordtoix, self.n_words = self.load_text_data(data_dir, selected_categories, split)
 
         self.number_example = len(self.filtered_image_indexes)
-
         self.class_id = self.load_class_id(self.number_example)
 
         # keep open only the specified split.
@@ -77,9 +77,10 @@ class TextDataset(data.Dataset):
     def filter_by_categories(self, selected_categories, split):
         # select train or test dataset h5 file
         file_h5 = self.train_file_h5 if split == 'train' else self.test_file_h5
-
         indexes = []
+
         for i in range(len(file_h5['input_category'])):
+            # print(file_h5['input_category'][i])
             if file_h5['input_category'][i][0].decode('utf-8') in selected_categories:
                 indexes.append(i)
         return indexes
@@ -94,9 +95,9 @@ class TextDataset(data.Dataset):
 
         all_captions = []
         for i in range(caption_count):
-            if file_h5['input_category'][i][0].decode('utf-8') in selected_categories:
+            if file_h5['input_category'][i] in selected_categories:
                 # get caption for this sample
-                caption = str(file_h5['input_description'][i][0].decode('utf-8', errors='ignore'))
+                caption = str(file_h5['input_description'][i])
 
                 # keep first sentence only
                 index = caption.find('.')
@@ -236,9 +237,7 @@ class TextDataset(data.Dataset):
 
     def get_imgs(self, index):
         h5_index = self.filtered_image_indexes[index]
-        img_arr = self.current_h5_file['input_image'][h5_index].astype('uint8')
-        print(img_arr)
-        img = Image.fromarray(img_arr, 'RGB')
+        img = Image.fromarray(self.current_h5_file['input_image'][h5_index].astype('uint8'), 'RGB')
 
         if self.transform is not None:
             img = self.transform(img)
@@ -268,7 +267,8 @@ class TextDataset(data.Dataset):
         return imgs, caps, cap_len, cls_id, key
 
     def __len__(self):
-        return len(self.class_id)
+        return len(self.filtered_image_indexes)
+
 
 
 if __name__ == '__main__':
@@ -281,7 +281,7 @@ if __name__ == '__main__':
         'WORDS_NUM': 10,
         'CAPTIONS_PER_IMAGE': 1,
         'B_DCGAN': False,
-        'WORKERS': 4
+        'WORKERS': 1  # It must be 1, I don't know why,
     })
 
     image_transform = transforms.Compose([
@@ -303,8 +303,7 @@ if __name__ == '__main__':
         num_workers=int(opt.WORKERS)
     )
 
-    for i, data in enumerate(dataloader):
-        imgs, caps, cap_len, cls_id, key = data
-        print(data)
-
-        break
+    data_iter = iter(dataloader)
+    data = data_iter.next()
+    imgs, captions, cap_lens, class_ids, keys = data
+    print(imgs[-1].shape)
